@@ -16,15 +16,17 @@
 				<p class="title" v-if="studentInformation.length!=0">学生进出记录：</p>
 				<view class="list-group" v-if="studentInformation.length!=0">
 					<view class="list-group-title">
-						<view style="width: 30%;">姓名</view>
-						<view style="width: 40%;">时间</view>
-						<view style="width: 30%;">体温</view>
+						<view style="flex:1">姓名</view>
+						<view style="flex:1">时间</view>
+						<view style="flex:1" v-if="studentInformation[0].temperature">体温</view>
+						<view style="flex:1" v-if="studentInformation[0].reverse2">进/出</view>
 					</view>
 					<view>
 						<view class="list" v-for="(item,index) in studentInformation" :key="index">
-							<view style="width: 30%;">{{item.name}}</view>
-							<view style="width: 40%;">{{item.createTime}}</view>
-							<view style="width: 30%;">{{item.temperature}}°C</view>
+							<view style="flex:1">{{item.name}}</view>
+							<view style="flex:1">{{item.createTime}}</view>
+							<view style="flex:1" v-if="item.temperature">{{item.temperature}}°C</view>
+							<view style="flex:1" v-if="item.reverse2">{{item.reserve2}}</view>
 						</view>
 					</view>
 				</view>
@@ -197,6 +199,7 @@
 			display: flex;
 			align-items: center;
 			font-weight: bold;
+			justify-content: space-around;
 
 			view {
 				// flex: 1;
@@ -211,6 +214,7 @@
 			display: flex;
 			align-items: center;
 			font-weight: bold;
+			justify-content: space-around;
 
 			view {
 				// flex: 1;

@@ -13,10 +13,14 @@
 		</view>
 		<view class="func-box">
 			<van-grid :column-num="isScanCodeSchool ? '1':'3'" :clickable="true" :border="true">
-				<van-grid-item v-if="isScanCodeDept" icon="https://jiankangdaka.oss-cn-beijing.aliyuncs.com/door1.png" text="进门" @click="openDoor(1)" />
-				<van-grid-item v-if="isScanCodeDept" icon="https://jiankangdaka.oss-cn-beijing.aliyuncs.com/door2.png" text="出门" @click="openDoor(2)" />
-				<van-grid-item v-if="isScanCodeDept" icon="https://jiankangdaka.oss-cn-beijing.aliyuncs.com/company.png" text="企业打卡"  @click="checkCompanyInformation" />
-				<van-grid-item v-if="isScanCodeSchool" icon="https://jiankangdaka.oss-cn-beijing.aliyuncs.com/student.png" text="家长入口" @click="toStudent" />
+				<van-grid-item v-if="isScanCodeDept" icon="https://jiankangdaka.oss-cn-beijing.aliyuncs.com/door1.png" text="进门"
+				 @click="openDoor(1)" />
+				<van-grid-item v-if="isScanCodeDept" icon="https://jiankangdaka.oss-cn-beijing.aliyuncs.com/door2.png" text="出门"
+				 @click="openDoor(2)" />
+				<van-grid-item v-if="isScanCodeDept" icon="https://jiankangdaka.oss-cn-beijing.aliyuncs.com/company.png" text="企业打卡"
+				 @click="checkCompanyInformation" />
+				<van-grid-item v-if="isScanCodeSchool" icon="https://jiankangdaka.oss-cn-beijing.aliyuncs.com/student.png" text="家长入口"
+				 @click="toStudent" />
 			</van-grid>
 			<view class="func-ncovdetail">
 				<van-notice-bar left-icon="https://jiankangdaka.oss-cn-beijing.aliyuncs.com/noticy.png" :text="titleNews"
@@ -63,14 +67,6 @@
 			<view style="padding-bottom: 16rpx;">
 				<image src="https://jiankangdaka.oss-cn-beijing.aliyuncs.com/oval.png" style="height: 20rpx;"></image>
 			</view>
-			<!-- <swiper v-if="ncovDetail.quanguoTrendChart" :indicator-dots="true" :autoplay="true" :interval="5000" :duration="1000"
-			 :circular="true" style="height: 500rpx;">
-				<swiper-item v-for="(item,index) in ncovDetail.quanguoTrendChart" :key="index">
-					<view class="swiper-item">
-						<image :src="item.imgUrl" style="width: 100%;" />
-					</view>
-				</swiper-item>
-			</swiper> -->
 			<view class="city-title">
 				<view class="area">地区</view>
 				<view class="diagnose">确诊</view>
@@ -179,9 +175,9 @@
 				// 是否扫码打开小程序
 				isScanCode: false,
 				// 扫码内容是否为小区/公司用户
-				isScanCodeDept:false,
+				isScanCodeDept: false,
 				// 扫码内容是否为学校用户
-				isScanCodeSchool:false,
+				isScanCodeSchool: false,
 				// 是否需要填写身份证号码(完善信息用)
 				isIdCard: false,
 				// 顶部新闻内容
@@ -255,34 +251,34 @@
 				this.isScanCode = true
 				uni.setStorageSync('isScanCode', true)
 				// -1:小区/公司用户 其他:学校用户
-				if(decodeURIComponent(options.scene).indexOf('a')=='-1'){
+				if (decodeURIComponent(options.scene).indexOf('a') == '-1') {
 					console.log('扫码，小区/公司用户')
 					this.isLogin = false
-					uni.setStorageSync('isLogin',false)
+					uni.setStorageSync('isLogin', false)
 					uni.setStorageSync('deptId', decodeURIComponent(options.scene))
 					this.scene = decodeURIComponent(options.scene)
 					this.isScanCodeDept = true
-					uni.setStorageSync('isScanCodeDept',true)
-					uni.setStorageSync('isScanCodeSchool',false)
+					uni.setStorageSync('isScanCodeDept', true)
+					uni.setStorageSync('isScanCodeSchool', false)
 					this.getDeptName(decodeURIComponent(options.scene))
 					if (uni.getStorageSync('isInformation')) {
 						this.setDeptId(uni.getStorageSync('userDetail').userId)
 					}
-				}else{
+				} else {
 					console.log('扫码，学校用户')
 					this.isLogin = true
-					uni.setStorageSync('isLogin',true)
-					var id = decodeURIComponent(options.scene).slice(1,decodeURIComponent(options.scene).length)
-					uni.setStorageSync('deptId',id)
+					uni.setStorageSync('isLogin', true)
+					var id = decodeURIComponent(options.scene).slice(1, decodeURIComponent(options.scene).length)
+					uni.setStorageSync('deptId', id)
 					this.scene = id
 					this.isScanCodeSchool = true
-					uni.setStorageSync('isScanCodeDept',false)
-					uni.setStorageSync('isScanCodeSchool',true)
+					uni.setStorageSync('isScanCodeDept', false)
+					uni.setStorageSync('isScanCodeSchool', true)
 					this.getSchoolName(id)
 				}
 			} else if (uni.getStorageSync('deptId')) {
 				// 小区/公司用户
-				if(uni.getStorageSync('isScanCodeDept')){
+				if (uni.getStorageSync('isScanCodeDept')) {
 					console.log('未扫码，小区/公司用户')
 					this.isScanCodeDept = true
 					this.getDeptName(uni.getStorageSync('deptId'))
@@ -304,13 +300,13 @@
 							}
 						})
 					}
-				}else{
+				} else {
 					// 学校用户
 					console.log('未扫码，学校用户')
 					this.isScanCodeSchool = true
 					this.isLogin = true
 					this.scene = uni.getStorageSync('deptId')
-					uni.setStorageSync('isLogin',true)
+					uni.setStorageSync('isLogin', true)
 					this.getSchoolName(uni.getStorageSync('deptId'))
 				}
 			}
@@ -358,22 +354,25 @@
 		},
 		methods: {
 			// 获取学校名称
-			getSchoolName:function(id){
+			getSchoolName: function(id) {
 				var that = this
-				this.uniFly.post({url:'/room/getSchool',params:{
-					deptId:id
-				}}).then(res=>{
+				this.uniFly.post({
+					url: '/room/getSchool',
+					params: {
+						deptId: id
+					}
+				}).then(res => {
 					console.log('学校名称')
 					console.log(res)
-					if(res.data.code==0){
+					if (res.data.code == 0) {
 						that.deptName = res.data.data.deptName
 					}
 				})
 			},
 			// 跳转学生页面
-			toStudent:function(){
+			toStudent: function() {
 				uni.navigateTo({
-					url:'../student/index'
+					url: '../student/index'
 				})
 			},
 			// 获取是否添加人脸

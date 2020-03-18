@@ -183,7 +183,6 @@
 			// 选择年级
 			changeGrade: function(e) {
 				var that = this
-				console.log(e.detail.value)
 				this.gradeIndex = e.detail.value
 				this.grade = this.gradeList[e.detail.value]
 				this.uniFly.post({
@@ -296,7 +295,7 @@
 							message: '完善中'
 						})
 						this.uniFly.post({
-							url: '/student/info/add',
+							url: 'https://wts.yinshangjituan.com/app/student/info/add',
 							params: {
 								name: this.name,
 								studentId: this.studentId,
