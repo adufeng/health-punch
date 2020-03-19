@@ -33,7 +33,7 @@
 		{
 			"path": "pages/addFaceDetector/index",
 			"style": {
-				"navigationBarTitleText": "人脸上传"
+				"navigationBarTitleText": "上传图片"
 			}
 		},
 		{

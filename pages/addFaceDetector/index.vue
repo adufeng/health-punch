@@ -1,10 +1,10 @@
 <template>
 	<view>
 		<view style="padding-top: 80rpx;">
-			<image src="https://zhihuiyiyuan.oss-cn-beijing.aliyuncs.com/tupian/checkFace.png" style="width: 100%;height: 400px;"></image>
+			<!-- <image src="https://zhihuiyiyuan.oss-cn-beijing.aliyuncs.com/tupian/checkFace.png" style="width: 100%;height: 400px;"></image> -->
 		</view>
 		<view style="padding: 14rpx">
-			<van-button type="info" round custom-class="shadow-btn" block @click="chooseFaceImage">开始检测</van-button>
+			<van-button type="info" round custom-class="shadow-btn" block @click="chooseFaceImage">点击开始检测</van-button>
 		</view>
 		<van-toast id="van-toast" />
 		<van-dialog id="van-dialog" />
