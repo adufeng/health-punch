@@ -56,6 +56,18 @@
 			}
 		},
 		{
+			"path": "pages/enterTeacher/index",
+			"style": {
+				"navigationBarTitleText": "录入教师信息"
+			}
+		},
+		{
+			"path": "pages/checkTeacher/index",
+			"style": {
+				"navigationBarTitleText": "查看教师信息"
+			}
+		},
+		{
 			"path": "pages/privacy/index",
 			"style": {
 				"navigationBarTitleText": "用户隐私条款"

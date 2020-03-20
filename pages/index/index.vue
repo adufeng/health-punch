@@ -19,7 +19,7 @@
 				 @click="openDoor(2)" />
 				<van-grid-item v-if="isScanCodeDept" icon="https://jiankangdaka.oss-cn-beijing.aliyuncs.com/company.png" text="企业打卡"
 				 @click="checkCompanyInformation" />
-				<van-grid-item v-if="isScanCodeSchool" icon="https://jiankangdaka.oss-cn-beijing.aliyuncs.com/student.png" text="家长入口"
+				<van-grid-item v-if="isScanCodeSchool" icon="https://jiankangdaka.oss-cn-beijing.aliyuncs.com/student.png" text="家长/教师入口"
 				 @click="toStudent" />
 			</van-grid>
 			<view class="func-ncovdetail">
