@@ -313,7 +313,16 @@
 									console.log('type:1,上传至百度云')
 									that.checkIsFaceBaidu(that.ossDetail.url, res.data.data.id)
 								} else if (res.data.data.type == 2) {
-									console.log('type:2,上传至泽弘,暂时不需要操作')
+									console.log('type:2,上传至泽弘')
+									Toast.clear()
+									Dialog.alert({
+										title: '提示',
+										message: '学生信息完善成功'
+									}).then(res => {
+										uni.navigateBack({
+											delta: 1
+										})
+									})
 								}
 							} else {
 								Toast(res.data.msg)
