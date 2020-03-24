@@ -39,7 +39,7 @@
 		{
 			"path": "pages/student/index",
 			"style": {
-				"navigationBarTitleText": "学生管理",
+				"navigationBarTitleText": "学生/教师管理",
 				"disableScroll": true
 			}
 		},

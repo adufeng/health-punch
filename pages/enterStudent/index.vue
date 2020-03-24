@@ -20,6 +20,8 @@
 			</picker>
 			<van-field label="姓名" placeholder="请输入学生姓名" required @input="getName" input-align="right" />
 			<van-field label="学号" placeholder="请输入学生学号" required @input="getStudentId" input-align="right" />
+			<van-field label="监护人手机号" placeholder="请输入学生监护人手机号码" required type="number" maxlength="11" @input="getPhoneNumber"
+			 input-align="right" />
 			<van-cell title="上传照片" :value="isOss ? '上传成功':'未上传'" is-link required @click="chooseImage" />
 		</van-cell-group>
 		<view style="padding:30rpx;font-size: 26rpx;color: #333;color: #777777;background-color: #FFFFFF;">
@@ -79,6 +81,8 @@
 				name: '',
 				// 学号
 				studentId: '',
+				// 监护人手机号
+				phone: '',
 				// 是否上传阿里云
 				isOss: false,
 				// 阿里云地址和key
@@ -221,6 +225,10 @@
 			getStudentId: function(e) {
 				this.studentId = e.detail
 			},
+			// 获取输入手机号
+			getPhoneNumber: function(e) {
+				this.phone = e.detail
+			},
 			// 点击选择照片
 			chooseImage: function() {
 				var that = this
@@ -273,6 +281,9 @@
 					if (!this.isOss) {
 						Toast('请上传人脸照片')
 					}
+					if (this.phone == '') {
+						Toast('请输入监护人手机号')
+					}
 					if (this.studentId == '') {
 						Toast('请输入学生学号')
 					}
@@ -288,7 +299,7 @@
 					if (this.grade == '') {
 						Toast('请选择年级')
 					}
-					if (this.grade && this.classs && this.sex && this.name && this.studentId && this.isOss) {
+					if (this.grade && this.classs && this.sex && this.name && this.studentId && this.isOss && this.phone) {
 						Toast.loading({
 							mask: true,
 							duration: 0,
@@ -300,6 +311,7 @@
 								name: this.name,
 								studentId: this.studentId,
 								gender: this.sex,
+								reserve1: this.phone,
 								schoolId: uni.getStorageSync('deptId'),
 								gradeId: this.gradeDetailList[this.gradeIndex].deptId,
 								classId: this.classDetailList[this.classIndex].deptId,
