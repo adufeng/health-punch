@@ -22,7 +22,7 @@
 			<van-field label="学号" placeholder="请输入学生学号" required @input="getStudentId" input-align="right" />
 			<van-field label="监护人手机号" placeholder="请输入学生监护人手机号码" required type="number" maxlength="11" @input="getPhoneNumber"
 			 input-align="right" />
-			<van-cell title="上传照片" :value="isOss ? '上传成功':'未上传'" is-link required @click="chooseImage" />
+			<van-cell title="上传头像" :value="isOss ? '上传成功':'未上传'" is-link required @click="chooseImage" />
 		</van-cell-group>
 		<view style="padding:30rpx;font-size: 26rpx;color: #333;color: #777777;background-color: #FFFFFF;">
 			提示:学号请勿输入汉字
@@ -235,7 +235,7 @@
 				uni.chooseImage({
 					count: 1,
 					sizeType: 'compressed',
-					sourceType: ['camera'],
+					sourceType: ['album'],
 					success: (e) => {
 						if (e.errMsg == "chooseImage:ok") {
 							Toast.loading({

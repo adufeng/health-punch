@@ -127,7 +127,7 @@
 			// 跳转用户隐私协议页面
 			toPrivacy: function() {
 				uni.navigateTo({
-					url:'../privacy/index'
+					url: '../privacy/index'
 				})
 			},
 			// 切换复选框
